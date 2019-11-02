@@ -1,0 +1,96 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+.container{
+    display: flex;
+}
+
+.mail{
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+    flex-grow: 1;
+    border-right-style: 1px solid #ddd;
+}
+
+.mail input{
+    width: 80%;
+    height: 50%;
+    font-size: 25px;
+    margin-bottom: 5%;
+    padding:2%;
+    border: 1px solid #ddd;
+}
+.mail label{
+    font-size:25px;
+    margin-bottom: 2%;
+}
+.mail button{
+    width:50%;
+    height: 50%;
+    font-size: 25px;
+    background-color: blueviolet;
+    color: white;
+    border:none;
+    border-radius: 5px;
+    padding: 2%;
+    cursor: pointer;
+}
+
+.search{
+    display: inline;
+    flex-grow: 1;
+}
+
+.search .inlineform{
+    display: flex;
+    position: relative;
+    margin: 5%;
+}
+
+.search input[type="text"]{
+    flex-grow: 2;
+    height: 25%;
+    font-size: 30px;
+    border: 1px solid #ddd;
+    padding: 2%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius:15px
+}
+
+.search input[type="button"]{
+    flex-grow: 1;
+    font-size: 30px;
+    background-color: blueviolet;
+    border: none;
+    color: white;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    cursor: pointer;
+}
+.showcheckbox{
+    margin-bottom: 5%;
+}
+
+.showcheckbox input[type="checkbox"]{
+    border-radius: 10px;
+}
+
+.showcheckbox span{
+    font-size: 15px;
+}
+
+table, td, th {  
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 15px;
+  }
