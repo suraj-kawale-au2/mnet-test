@@ -93,11 +93,7 @@ const deleteMail = (event) => {
     {
         mails.delete(event.target.id);
         console.log(mails);
-        for (let i = 0; i < rows.length; i++) {
-           if(rows[i].children[1].textContent == event.target.id){
-               rows.splice(i,1);
-           }
-        }
+        rows = rows.filter(item=>item.children[1].textContent !== event.target.id)
         console.log(rows);
         showall(event);
     }
