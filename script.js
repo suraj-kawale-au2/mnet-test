@@ -1,7 +1,12 @@
 let mails = new Map();
 
 let rows = [];
+console.log(rows);
 const createRow = (mail) => {
+           if(mails.has(mail)){
+               alert("MAIL ID ALREADY EXISTS");
+               return 0;
+           }
             let i=0;
             let row = document.createElement("tr");
             let checkbox = document.createElement("input");
@@ -13,12 +18,13 @@ const createRow = (mail) => {
             td1.appendChild(checkbox);
             let td2data = document.createTextNode(mail)
             td2.appendChild(td2data);
-            let td3data = document.createTextNode(`\u2421`);
+            let td3data = document.createTextNode(`	\u{1F5D1}`);
             td3.appendChild(td3data);
+            td3.className = "delete";
+            td3.id = mail;
             row.appendChild(td1);
             row.appendChild(td2);
             row.appendChild(td3);
-            document.getElementById("tablebody").appendChild(row);
             return row;
 }
 
@@ -28,11 +34,14 @@ const addmails = (e) => {
     let i = 0;
     if (mail) {
         if (mail.includes("@")) {
-            mails.set(mail, { isEnable: false })
             document.querySelector('form').reset();
             console.log('added', mails);
             let mailrow = createRow(mail);
+            if(mailrow){
             rows.push(mailrow);
+            rows.map(item=>document.getElementById('tablebody').appendChild(item));
+            }
+            mails.set(mail, { isEnable: false })
         }
         else {
             alert("mail doesn't contain @")
@@ -51,12 +60,14 @@ const searchmails = (e) => {
             let reterievedMails = mails.get(searchedMail);
             console.log(reterievedMails);
             let child = document.getElementById("tablebody").lastElementChild;
-            while (child) {
+            while (child){
+                console.log(child.children[1].textContent)
                 document.getElementById("tablebody").removeChild(child);
                 child = document.getElementById("tablebody").lastElementChild;
             }
-            let searchrow = createRow(searchedMail);
-            document.getElementById("tablebody").appendChild(searchrow);
+            let searchrow = rows.filter(item=>item.children[1].textContent == searchedMail);
+            console.log(searchrow)
+            document.getElementById("tablebody").appendChild(searchrow[0]);
             document.getElementById('searchform').reset();
         } else {
             alert(`${searchedMail} Not Found`);
@@ -68,13 +79,33 @@ const searchmails = (e) => {
 }
 
 const showall = (e) => {
-    e.preventDefault();
+    let child = document.getElementById("tablebody").lastElementChild;
+            while (child){
+                console.log(child.children[1].textContent)
+                document.getElementById("tablebody").removeChild(child);
+                child = document.getElementById("tablebody").lastElementChild;
+            }
     rows.map(item=>document.getElementById('tablebody').appendChild(item));
 }
 
+const deleteMail = (event) => {
+    if(event.target && event.target.className=="delete")
+    {
+        mails.delete(event.target.id);
+        console.log(mails);
+        for (let i = 0; i < rows.length; i++) {
+           if(rows[i].children[1].textContent == event.target.id){
+               rows.splice(i,1);
+           }
+        }
+        console.log(rows);
+        showall(event);
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("addMailsBtn").addEventListener('click', addmails);
     document.getElementById("searchbtn").addEventListener('click', searchmails);
     document.getElementById("showall").addEventListener('click',showall);
+    document.addEventListener('click',deleteMail)
 })
