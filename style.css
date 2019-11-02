@@ -13,9 +13,9 @@ body{
     border-right-style: 1px solid #ddd;
 }
 
-.mail input{
-    width: 80%;
-    height: 50%;
+.mail input[type="email"]{
+    min-width: 80%;
+    min-height: 25%;
     font-size: 25px;
     margin-bottom: 5%;
     padding:2%;
@@ -50,12 +50,13 @@ body{
 
 .search input[type="text"]{
     flex-grow: 2;
+    width:35rem;
     height: 25%;
     font-size: 30px;
     border: 1px solid #ddd;
-    padding: 2%;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius:15px
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius:10px
 }
 
 .search input[type="button"]{
@@ -64,12 +65,13 @@ body{
     background-color: blueviolet;
     border: none;
     color: white;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     cursor: pointer;
 }
 .showcheckbox{
     margin-bottom: 5%;
+    margin-left: 5%;
 }
 
 .showcheckbox input[type="checkbox"]{
@@ -78,6 +80,17 @@ body{
 
 .showcheckbox span{
     font-size: 15px;
+}
+
+.showcheckbox .showall{
+    float: right;
+    margin-right: 5%;
+    font-size:25px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    padding: 1%;
+    border-radius: 10px;
 }
 
 table, td, th {  
@@ -93,4 +106,5 @@ table, td, th {
   
   th, td {
     padding: 15px;
+    font-size: 25px;
   }

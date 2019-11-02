@@ -11,18 +11,24 @@
 <body>
     <div class="container">
         <div class="mail">
+        <form action="" method="">
             <label for="email">Email Address</label>
-            <input type="email" name="" id="" placeholder="abc@gmail.com" required autocomplete="false"/> 
-            <button type="submit">Add</button>
+            <input type="email" name="" id="inputmail" placeholder="abc@gmail.com" required autocomplete="false"/> 
+            <button type="submit" id="addMailsBtn">Add</button>
+        </form>
         </div>
         <div class="search">
+        <form action="" method="" id="searchform">
             <div class="inlineform">
-                <input type="text" placeholder="search"/>
-                <input type="button" value="GO"/>
+                <input type="text" placeholder="search" id="searchbox" required/>
+                <input type="button" value="Go!" id="searchbtn"/>
+                
             </div>
             <div class="showcheckbox">
-                <input type="checkbox" name="showonly" id=""/> <span>Show Only Enabled</span>
+                    <input type="checkbox" name="showonly" id=""/> <span>Show Only Enabled</span>
+                    <button class="showall" id="showall">Show all</button>
             </div>
+        </form>
             <div class="search-table">
                 <table>
                     <tr>
@@ -30,9 +36,11 @@
                         <th>Email</th>
                         <th>Delete</th>
                     </tr>
+                    <tbody id="tablebody"></tbody>
                 </table>
             </div>
         </div>
     </div>
+    <script src="script.js" charset="utf-8"></script>
 </body>
 </html>
